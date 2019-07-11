@@ -1,0 +1,47 @@
+﻿@model arara.Models.gerente
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Intranet.cshtml";
+}
+@Styles.Render("~/Content/css/intranet-tables.css")
+<h2>Details</h2>
+
+<h3 class="error_message">@ViewBag.Message</h3>
+<h3 class="error_message">@ViewBag.ErrorMessage</h3>
+
+<fieldset>
+    <legend>gerente</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.id_gerente)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.id_gerente)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nombre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.apellido_p)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.apellido_p)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.apellido_m)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.apellido_m)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Editar", new { id=Model.id_gerente }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

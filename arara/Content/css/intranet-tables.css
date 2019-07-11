@@ -1,0 +1,88 @@
+﻿body {
+    text-align:center
+}
+
+#wrapper {
+    width:1200px;
+    margin: 0 auto;
+}
+
+.table {
+    width: 1200px;
+}
+
+
+.table tr td {
+    text-align: center;
+    height: 35px;
+}
+
+fieldset {
+    padding: 75px;  
+}
+
+#buscar_btn {
+    width: 125px;
+    height: 45px;
+    border-radius: 4px;
+    border: 1px solid black;
+}
+
+#buscar_btn:hover {
+    text-decoration: underline;
+}
+
+
+#menu ul li {
+    margin: 5px 0;
+}
+#menu ul li a{
+    text-decoration: none;
+    font-size: 18px;
+    font-weight:bolder;
+    color: black;
+    margin: 5px 0;
+
+}
+
+#menu ul li a:hover {
+    color: orange;
+}
+
+#menu ul {
+    list-style:none;
+    padding: 0;
+}
+
+#add_btn {
+    width: 125px;
+    height: 45px;
+    background-color: #ADF1A4;
+    margin: 0 auto;
+    vertical-align: middle;
+    padding: 10px 5px;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+#add_btn a{
+    text-decoration: none;
+    vertical-align: middle;
+    font-size: 16px;
+    color: black;
+}
+#add_btn a:hover{
+    text-decoration: underline;
+}
+
+#cabecera {
+    background-color: #ADF1A4;
+}
+
+#operations a{
+    color: black;
+}
+
+#operations a:hover{
+    color: orange;
+}

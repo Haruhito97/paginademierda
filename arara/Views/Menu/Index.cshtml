@@ -1,0 +1,68 @@
+﻿@model IEnumerable<arara.Models.Productos>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Intranet.cshtml";
+}
+@Styles.Render("~/Content/css/intranet-tables.css")
+<div id="wrapper">
+
+
+    <h1>Lista Menu</h1>
+
+    <h3 class="error_message">@ViewBag.Message</h3>
+    <h3 class="error_message">@ViewBag.ErrorMessage</h3>
+
+    <p id="add_btn">
+        @Html.ActionLink("Agregar", "Agregar")
+    </p>
+    @using (Html.BeginForm())
+    {
+        <p>
+            ID Local: @Html.TextBox("id") <br />
+            <br>
+            <input type="submit" value="Buscar" id="buscar_btn" />
+        </p>
+    }
+    <table class="table">
+        <tr id="cabecera">
+            <th>
+                @Html.DisplayNameFor(model => model.id_producto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.detalles)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.precio)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id_producto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.detalles)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.precio)
+                </td>
+                <td id="operations">
+                    @Html.ActionLink("Edit", "Editar", new { id = item.id_producto }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id_producto }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id_producto })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

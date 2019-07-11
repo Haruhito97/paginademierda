@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AlimentoVelozModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="gerente">
+          <Key>
+            <PropertyRef Name="id_gerente" />
+          </Key>
+          <Property Name="id_gerente" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="apellido_p" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="apellido_m" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="locales">
+          <Key>
+            <PropertyRef Name="id_local" />
+          </Key>
+          <Property Name="id_local" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="direccion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_gerente" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="orden">
+          <Key>
+            <PropertyRef Name="id_orden" />
+          </Key>
+          <Property Name="id_orden" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="detalles" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="id_repartidor" Type="int" Nullable="false" />
+          <Property Name="direccion_cliente" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="id_local" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="id_producto" />
+          </Key>
+          <Property Name="id_producto" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="detalles" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="precio" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="repartidor">
+          <Key>
+            <PropertyRef Name="id_repartidor" />
+          </Key>
+          <Property Name="id_repartidor" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="apellido_p" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="apellido_m" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="id_local" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__locales__id_gere__08EA5793">
+          <End Role="gerente" Type="Self.gerente" Multiplicity="1" />
+          <End Role="locales" Type="Self.locales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gerente">
+              <PropertyRef Name="id_gerente" />
+            </Principal>
+            <Dependent Role="locales">
+              <PropertyRef Name="id_gerente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__orden__id_local__0DAF0CB0">
+          <End Role="locales" Type="Self.locales" Multiplicity="1" />
+          <End Role="orden" Type="Self.orden" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="locales">
+              <PropertyRef Name="id_local" />
+            </Principal>
+            <Dependent Role="orden">
+              <PropertyRef Name="id_local" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__repartido__id_lo__1273C1CD">
+          <End Role="locales" Type="Self.locales" Multiplicity="1" />
+          <End Role="repartidor" Type="Self.repartidor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="locales">
+              <PropertyRef Name="id_local" />
+            </Principal>
+            <Dependent Role="repartidor">
+              <PropertyRef Name="id_local" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AlimentoVelozModelStoreContainer">
+          <EntitySet Name="gerente" EntityType="Self.gerente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="locales" EntityType="Self.locales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="orden" EntityType="Self.orden" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="repartidor" EntityType="Self.repartidor" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__locales__id_gere__08EA5793" Association="Self.FK__locales__id_gere__08EA5793">
+            <End Role="gerente" EntitySet="gerente" />
+            <End Role="locales" EntitySet="locales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__orden__id_local__0DAF0CB0" Association="Self.FK__orden__id_local__0DAF0CB0">
+            <End Role="locales" EntitySet="locales" />
+            <End Role="orden" EntitySet="orden" />
+          </AssociationSet>
+          <AssociationSet Name="FK__repartido__id_lo__1273C1CD" Association="Self.FK__repartido__id_lo__1273C1CD">
+            <End Role="locales" EntitySet="locales" />
+            <End Role="repartidor" EntitySet="repartidor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AlimentoVelozModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="gerente">
+          <Key>
+            <PropertyRef Name="id_gerente" />
+          </Key>
+          <Property Name="id_gerente" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido_p" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido_m" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="locales" Relationship="Self.FK__locales__id_gere__08EA5793" FromRole="gerente" ToRole="locales" />
+        </EntityType>
+        <EntityType Name="locales">
+          <Key>
+            <PropertyRef Name="id_local" />
+          </Key>
+          <Property Name="id_local" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_gerente" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="gerente" Relationship="Self.FK__locales__id_gere__08EA5793" FromRole="locales" ToRole="gerente" />
+          <NavigationProperty Name="orden" Relationship="Self.FK__orden__id_local__0DAF0CB0" FromRole="locales" ToRole="orden" />
+          <NavigationProperty Name="repartidor" Relationship="Self.FK__repartido__id_lo__1273C1CD" FromRole="locales" ToRole="repartidor" />
+        </EntityType>
+        <EntityType Name="orden">
+          <Key>
+            <PropertyRef Name="id_orden" />
+          </Key>
+          <Property Name="id_orden" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="detalles" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_repartidor" Type="Int32" Nullable="false" />
+          <Property Name="direccion_cliente" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_local" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="locales" Relationship="Self.FK__orden__id_local__0DAF0CB0" FromRole="orden" ToRole="locales" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="id_producto" />
+          </Key>
+          <Property Name="id_producto" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="detalles" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="precio" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="repartidor">
+          <Key>
+            <PropertyRef Name="id_repartidor" />
+          </Key>
+          <Property Name="id_repartidor" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido_p" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido_m" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_local" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="locales" Relationship="Self.FK__repartido__id_lo__1273C1CD" FromRole="repartidor" ToRole="locales" />
+        </EntityType>
+        <Association Name="FK__locales__id_gere__08EA5793">
+          <End Role="gerente" Type="Self.gerente" Multiplicity="1" />
+          <End Role="locales" Type="Self.locales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gerente">
+              <PropertyRef Name="id_gerente" />
+            </Principal>
+            <Dependent Role="locales">
+              <PropertyRef Name="id_gerente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__orden__id_local__0DAF0CB0">
+          <End Role="locales" Type="Self.locales" Multiplicity="1" />
+          <End Role="orden" Type="Self.orden" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="locales">
+              <PropertyRef Name="id_local" />
+            </Principal>
+            <Dependent Role="orden">
+              <PropertyRef Name="id_local" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__repartido__id_lo__1273C1CD">
+          <End Role="locales" Type="Self.locales" Multiplicity="1" />
+          <End Role="repartidor" Type="Self.repartidor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="locales">
+              <PropertyRef Name="id_local" />
+            </Principal>
+            <Dependent Role="repartidor">
+              <PropertyRef Name="id_local" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AlimentoVelozEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="gerente" EntityType="Self.gerente" />
+          <EntitySet Name="locales" EntityType="Self.locales" />
+          <EntitySet Name="orden" EntityType="Self.orden" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" />
+          <EntitySet Name="repartidor" EntityType="Self.repartidor" />
+          <AssociationSet Name="FK__locales__id_gere__08EA5793" Association="Self.FK__locales__id_gere__08EA5793">
+            <End Role="gerente" EntitySet="gerente" />
+            <End Role="locales" EntitySet="locales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__orden__id_local__0DAF0CB0" Association="Self.FK__orden__id_local__0DAF0CB0">
+            <End Role="locales" EntitySet="locales" />
+            <End Role="orden" EntitySet="orden" />
+          </AssociationSet>
+          <AssociationSet Name="FK__repartido__id_lo__1273C1CD" Association="Self.FK__repartido__id_lo__1273C1CD">
+            <End Role="locales" EntitySet="locales" />
+            <End Role="repartidor" EntitySet="repartidor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AlimentoVelozModelStoreContainer" CdmEntityContainer="AlimentoVelozEntities1">
+          <EntitySetMapping Name="gerente">
+            <EntityTypeMapping TypeName="AlimentoVelozModel.gerente">
+              <MappingFragment StoreEntitySet="gerente">
+                <ScalarProperty Name="id_gerente" ColumnName="id_gerente" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido_p" ColumnName="apellido_p" />
+                <ScalarProperty Name="apellido_m" ColumnName="apellido_m" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="locales">
+            <EntityTypeMapping TypeName="AlimentoVelozModel.locales">
+              <MappingFragment StoreEntitySet="locales">
+                <ScalarProperty Name="id_local" ColumnName="id_local" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="id_gerente" ColumnName="id_gerente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orden">
+            <EntityTypeMapping TypeName="AlimentoVelozModel.orden">
+              <MappingFragment StoreEntitySet="orden">
+                <ScalarProperty Name="id_orden" ColumnName="id_orden" />
+                <ScalarProperty Name="detalles" ColumnName="detalles" />
+                <ScalarProperty Name="id_repartidor" ColumnName="id_repartidor" />
+                <ScalarProperty Name="direccion_cliente" ColumnName="direccion_cliente" />
+                <ScalarProperty Name="id_local" ColumnName="id_local" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Productos">
+            <EntityTypeMapping TypeName="AlimentoVelozModel.Productos">
+              <MappingFragment StoreEntitySet="Productos">
+                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="detalles" ColumnName="detalles" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="repartidor">
+            <EntityTypeMapping TypeName="AlimentoVelozModel.repartidor">
+              <MappingFragment StoreEntitySet="repartidor">
+                <ScalarProperty Name="id_repartidor" ColumnName="id_repartidor" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido_p" ColumnName="apellido_p" />
+                <ScalarProperty Name="apellido_m" ColumnName="apellido_m" />
+                <ScalarProperty Name="id_local" ColumnName="id_local" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

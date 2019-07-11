@@ -1,0 +1,47 @@
+﻿* {
+    box-sizing: border-box;
+    font-family: monospace;
+}
+
+body {
+    width: 1200px;
+    margin: 0 auto;
+    background: url('../img/naranja.jpg') no-repeat;
+    background-size: cover;
+}
+
+#body {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    margin; 0 auto;
+    width: 100%;
+    border-bottom: 2px solid grey;
+}
+
+#navegador {
+    width: 900px;
+    margin: 0 auto;
+}
+
+#navegador ul {
+    display: inline-block;
+    list-style: none;
+    text-align: center;
+    width: 900px;
+    margin: 5 auto; 
+    padding: 0;
+}
+
+#navegador ul li{
+    display: inline-block;
+    width: 150px;
+}
+
+#navegador ul li a {
+    text-decoration: none;
+    color: black;
+}
+

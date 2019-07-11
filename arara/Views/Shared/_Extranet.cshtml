@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta charset="utf-8" />
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Scripts.Render("~/bundles/modernizr")
+        @Styles.Render("~/Content/css/extranet.css")
+    </head>
+    <body>
+        <header>
+            <nav id="navegador">
+                <ul>
+                    <li>
+                        @Html.ActionLink("Inicio", "Index", "Home")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Locales", "Ubicacion", "Home")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Contacto", "Contacto", "Home")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Quienes Somos", "About", "Home")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Intranet", "IntraHome")
+                    </li>
+                </ul>
+            </nav>
+            <div class="clear"></div>
+        </header>
+   <!--     <div id="banner-wrap">
+            <div id="banner">
+                <img src="~/Content/img/banner-completo.jpg" id="banner-img" />
+            </div>
+        </div> -->
+        <div id="body">
+                @RenderBody()
+        </div>
+        <footer>
+          
+        </footer>
+
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

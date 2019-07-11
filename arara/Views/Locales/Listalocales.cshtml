@@ -1,0 +1,60 @@
+﻿@model IEnumerable<arara.Models.locales>
+@{
+    ViewBag.Title = "Listalocales";
+    Layout = "~/Views/Shared/_Intranet.cshtml";
+}
+@Styles.Render("~/Content/css/intranet-tables.css")
+
+<div id="wrapper">
+
+    <h1>Lista locales</h1>
+    <h3 class="error_message">@ViewBag.Message</h3>
+    <h3 class="error_message">@ViewBag.ErrorMessage</h3>
+
+    <p id="add_btn">
+        @Html.ActionLink("Agregar", "Agregar")
+    </p>
+    @using (Html.BeginForm())
+    {
+        <p>
+            ID Local: @Html.TextBox("id") <br />
+            <br>
+            <input type="submit" value="Buscar" id="buscar_btn" />
+        </p>
+    }
+    <table class="table">
+        <tr id="cabecera">
+            <th>
+                @Html.DisplayNameFor(model => model.id_local)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.direccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.id_gerente)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id_local)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.direccion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id_gerente)
+                </td>
+                <td id="operations">
+                    @Html.ActionLink("Editar", "Editar", new { id = item.id_local }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id_local }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id_local })
+                </td>
+            </tr>
+        }
+    </table>
+
+</div>

@@ -1,0 +1,64 @@
+﻿@model arara.Models.gerente
+
+@{
+    ViewBag.Title = "Editar";
+    Layout = "~/Views/Shared/_Intranet.cshtml";
+}
+@Styles.Render("~/Content/css/intranet-tables.css")
+<h2>Editar</h2>
+
+<h3 class="error_message">@ViewBag.Message</h3>
+<h3 class="error_message">@ViewBag.ErrorMessage</h3>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>gerente</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.id_gerente)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.id_gerente)
+            @Html.ValidationMessageFor(model => model.id_gerente)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.nombre)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nombre)
+            @Html.ValidationMessageFor(model => model.nombre)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.apellido_p)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.apellido_p)
+            @Html.ValidationMessageFor(model => model.apellido_p)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.apellido_m)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.apellido_m)
+            @Html.ValidationMessageFor(model => model.apellido_m)
+        </div>
+
+        <p>
+            <input type="submit" value="Guardar" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

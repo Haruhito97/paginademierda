@@ -1,0 +1,63 @@
+﻿@model arara.Models.Productos
+
+@{
+    ViewBag.Title = "Editar";
+    Layout = "~/Views/Shared/_Intranet.cshtml";
+}
+@Styles.Render("~/Content/css/intranet-tables.css")
+<h2>Editar</h2>
+<h3 class="error_message">@ViewBag.Message</h3>
+<h3 class="error_message">@ViewBag.ErrorMessage</h3>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Productos</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.id_producto)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.id_producto)
+            @Html.ValidationMessageFor(model => model.id_producto)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.nombre)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nombre)
+            @Html.ValidationMessageFor(model => model.nombre)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.detalles)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.detalles)
+            @Html.ValidationMessageFor(model => model.detalles)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.precio)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.precio)
+            @Html.ValidationMessageFor(model => model.precio)
+        </div>
+
+        <p>
+            <input type="submit" value="Guardar" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

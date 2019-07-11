@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta charset="utf-8" />
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Scripts.Render("~/bundles/modernizr")
+        @Styles.Render("~/Content/css/intranet.css")
+    </head>
+    <body>
+        <header>
+            <nav id="navegador">
+                <ul>
+                    <li>
+                        @Html.ActionLink("Inicio", "IntraHome", "Home")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Locales", "Listalocales", "Locales")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Gerentes", "Index", "Gerentes")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Menú", "Index", "Menu")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Extranet", "Index", "Home")
+                    </li>
+                </ul>
+            </nav>
+            <div class="clear"></div>
+        </header>
+        <div id="body">
+                @RenderBody()
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

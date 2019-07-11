@@ -1,0 +1,46 @@
+﻿@model arara.Models.Productos
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Intranet.cshtml";
+}
+@Styles.Render("~/Content/css/intranet-tables.css")
+<h2>Details</h2>
+<h3 class="error_message">@ViewBag.Message</h3>
+<h3 class="error_message">@ViewBag.ErrorMessage</h3>
+
+<fieldset>
+    <legend>Productos</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.id_producto)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.id_producto)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nombre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.detalles)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.detalles)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.precio)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.precio)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Editar", new { id=Model.id_producto }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

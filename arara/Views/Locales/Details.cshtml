@@ -1,0 +1,40 @@
+﻿@model arara.Models.locales
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Intranet.cshtml";
+}
+@Styles.Render("~/Content/css/intranet-tables.css")
+<h2>Details</h2>
+
+<h3 class="error_message">@ViewBag.Message</h3>
+<h3 class="error_message">@ViewBag.ErrorMessage</h3>
+
+<fieldset>
+    <legend>locales</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.id_local)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.id_local)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.direccion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.direccion)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.id_gerente)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.id_gerente)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Editar", "Editar", new { id=Model.id_local }) |
+    @Html.ActionLink("Back to List", "Listalocales")
+</p>

@@ -1,0 +1,34 @@
+﻿@{
+    Layout = "~/Views/Shared/_Intranet.cshtml";
+}
+@Styles.Render("~/Content/css/intranet-tables.css")
+<div id="wrapper">
+
+
+    <h2>IntraHome</h2>
+
+    <p>@ViewBag.Message</p>
+
+    <div id="menu">
+
+        <ul>
+            <li>
+                @Html.ActionLink("Inicio", "IntraHome", "Home")
+            </li>
+            <li>
+                @Html.ActionLink("Locales", "Listalocales", "Locales")
+            </li>
+            <li>
+                @Html.ActionLink("Gerentes", "Index", "Gerentes")
+            </li>
+            <li>
+                @Html.ActionLink("Menú", "Index", "Menu")
+            </li>
+            <li>
+                @Html.ActionLink("Extranet", "Index", "Home")
+            </li>
+        </ul>
+
+    </div>
+
+</div>
